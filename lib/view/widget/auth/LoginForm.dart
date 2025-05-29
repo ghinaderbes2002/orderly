@@ -16,19 +16,19 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginControllerImp controller   = Get.put(LoginControllerImp());
-    AuthController controller1  = Get.put(AuthController());
+    LoginControllerImp controller = Get.put(LoginControllerImp());
+    AuthController controller1 = Get.put(AuthController());
 
 
     return Column(
       children: [
         const SizedBox(height: 10),
         CustomTextFormField(
-          controller: controller.email,
-          label: 'البريد الإلكتروني',
-          hintText: 'example@gmail.com',
-          prefixIcon: Icons.email_outlined,
-          validator: (val) => validInput(val!, 5, 100, "email"),
+          controller: controller.phone,
+          label: 'رقم الهاتف ',
+          hintText: 'أدخل رقم الهاتف',
+          prefixIcon: Icons.phone,
+          validator: (val) => validInput(val!, 5, 100, "phone"),
           isDarkMode: false,
         ),
         const SizedBox(height: 16),

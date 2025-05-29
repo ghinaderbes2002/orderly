@@ -8,7 +8,7 @@ abstract class ForgetPassController extends GetxController {
 class ForgetPassControllerImp extends ForgetPassController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
 
-  late TextEditingController email;
+  late TextEditingController phone;
 
   Staterequest staterequest = Staterequest.none;
 
@@ -16,13 +16,13 @@ class ForgetPassControllerImp extends ForgetPassController {
   
   @override
   void onInit() {
-    email = TextEditingController();
+    phone = TextEditingController();
     super.onInit();
   }
 
   @override
   void dispose() {
-    email.dispose();
+    phone.dispose();
     super.dispose();
   }
 }

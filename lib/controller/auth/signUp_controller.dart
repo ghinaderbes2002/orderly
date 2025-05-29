@@ -14,7 +14,6 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController name;
   late TextEditingController phone;
   late TextEditingController password;
-  late TextEditingController email;
 
   Staterequest staterequest = Staterequest.none;
 
@@ -32,7 +31,6 @@ class SignUpControllerImp extends SignUpController {
         ApiResponse<dynamic> postResponse = await apiClient
             .postData(url: '$serverLink/auth/user_register', data: {
           'name_user': name.text.trim(),
-          'email': email.text.trim(),
           'password': password.text.trim(),
           'phone_number': phone.text.trim(),
         });
@@ -96,7 +94,6 @@ class SignUpControllerImp extends SignUpController {
     name = TextEditingController();
     phone = TextEditingController();
     password = TextEditingController();
-    email = TextEditingController();
     super.onInit();
   }
 
@@ -105,7 +102,6 @@ class SignUpControllerImp extends SignUpController {
     name.dispose();
     phone.dispose();
     password.dispose();
-    email.dispose();
     super.dispose();
   }
 }

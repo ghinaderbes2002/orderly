@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:orderly/core/constant/App_images.dart';
 import 'package:orderly/core/them/app_colors.dart';
 
-// ويدجت مخصصة لعرض اللوغو والنص
 class Logo extends StatelessWidget {
   const Logo({super.key});
 

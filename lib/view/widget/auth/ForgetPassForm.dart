@@ -19,20 +19,21 @@ class ForgetPassForm extends StatelessWidget {
       children: [
         const SizedBox(height: 10),
         CustomTextFormField(
-          controller: controller.email,
-          label: 'البريد الإلكتروني',
-          hintText: 'example@gmail.com',
+          controller: controller.phone,
+          label: ' رقم الهاتف',
+          hintText: 'أدخل رقم الهاتف',
           prefixIcon: Icons.email_outlined,
-          validator: (val) => validInput(val!, 5, 100, "email"),
+          validator: (val) => validInput(val!, 5, 100, "phone"),
           isDarkMode: false,
         ),
      const SizedBox(height: 40),
       CustomButton(
         text: 'إرسال',
         onPressed: () {
-        controller1.switchForm(3);        },
+        controller1.switchForm(3);   
+       },
       ),
-      ]
+    ]
     );
     
   }

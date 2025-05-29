@@ -38,7 +38,7 @@ class OtpVerificationForm extends StatelessWidget {
             ),
           ),
         ),
-        onChanged: (val) => controller.handleInput(val, index),
+        onChanged: (val) => controller.handleInput(val, (index)),
       ),
     );
   }
@@ -50,8 +50,7 @@ class OtpVerificationForm extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: GestureDetector(
-          onTap: () =>
-              FocusScope.of(context).unfocus(), // يخفي الكيبورد عند الضغط خارج
+          onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
@@ -65,15 +64,17 @@ class OtpVerificationForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 Wrap(
-                  spacing: 8,
-                  alignment: WrapAlignment.center,
-                  children: List.generate(5, (index) => buildOtpBox(index)),
-                ),
+                    spacing: 8,
+                    alignment: WrapAlignment.center,
+                    children: List.generate(
+                        5, (index) => buildOtpBox(5 - 1 - index))),
                 const SizedBox(height: 40),
                 CustomButton(
                   text: 'التالي',
                   onPressed: controller.verifyOtp,
                 ),
+                const SizedBox(height: 10),
+                // بإمكانك لاحقًا إضافة زر إعادة الإرسال هنا
               ],
             ),
           ),

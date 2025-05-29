@@ -39,12 +39,12 @@ class SignUpForm extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         CustomTextFormField(
-                          controller: controller.email,
+                          controller: controller.phone,
                           validator: (val) =>
-                              validInput(val!, 10, 100, "email"),
-                          label: " البريد الالكتروني",
-                          hintText: "أدخل البريد الالكتروني ",
-                          prefixIcon: Icons.email_outlined,
+                              validInput(val!, 10, 100, "phone"),
+                          label: "رقم الهاتف ",
+                          hintText: "أدخل رقم الهاتف ",
+                          prefixIcon: Icons.phone,
                           isDarkMode: false,
                         ),
                         const SizedBox(height: 16),

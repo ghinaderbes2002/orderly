@@ -14,7 +14,7 @@ abstract class LoginController extends GetxController {
 class LoginControllerImp extends LoginController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
 
-  late TextEditingController email;
+  late TextEditingController phone;
   late TextEditingController password;
 
   Staterequest staterequest = Staterequest.none;
@@ -30,7 +30,7 @@ class LoginControllerImp extends LoginController {
       try {
         ApiResponse<dynamic> postResponse =
             await apiClient.postData(url: '$serverLink/auth/user_login', data: {
-          'name_user': email.text.trim(),
+          'name_user': phone.text.trim(),
           'password': password.text.trim(),
         });
         print('POST Response Data: ${postResponse.data}');
@@ -109,14 +109,14 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
-    email = TextEditingController();
+    phone = TextEditingController();
     password = TextEditingController();
     super.onInit();
   }
 
   @override
   void dispose() {
-    email.dispose();
+    phone.dispose();
     password.dispose();
     super.dispose();
   }
