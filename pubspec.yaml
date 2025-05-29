@@ -119,3 +119,4 @@ dependency_overrides:
   shared_preferences_android: ^2.4.10
   url_launcher_android: ^6.3.16
   geolocator_android: ^5.0.1
+  package_info_plus: ^8.3.0
