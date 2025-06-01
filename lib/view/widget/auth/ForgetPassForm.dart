@@ -23,14 +23,41 @@ class ForgetPassForm extends StatelessWidget {
           label: ' رقم الهاتف',
           hintText: 'أدخل رقم الهاتف',
           prefixIcon: Icons.email_outlined,
-          validator: (val) => validInput(val!, 5, 100, "phone"),
+          validator: (val) => validInput(val!, 9, 15, "phone"),
           isDarkMode: false,
         ),
+       const SizedBox(height: 16),
+      CustomTextFormField(
+        controller: controller.newPassword,
+        label: ' كلمة السر الجديدة ',
+        hintText: 'أدخل كلمة السر الجديدة ',
+        prefixIcon: Icons.email_outlined,
+        validator: (val) => validInput(val!, 5, 100, "phone"),
+        isDarkMode: false,
+      ),
+       const SizedBox(height: 16),
+    CustomTextFormField(
+        controller: controller.confirmPassword,
+        label: ' تأكيد كلمة السر',
+        hintText: 'أعد كتابة كلمة السر',
+        prefixIcon: Icons.lock_outline,
+        validator: (val) {
+          if (val == null || val.isEmpty) {
+            return 'يرجى تأكيد كلمة السر';
+          } else if (val != controller.newPassword.text) {
+            return 'كلمتا السر غير متطابقتين';
+          }
+          return null;
+        },
+        isDarkMode: false,
+      ),
+
      const SizedBox(height: 40),
       CustomButton(
         text: 'إرسال',
         onPressed: () {
-        controller1.switchForm(3);   
+          controller.sendResetCode();
+        //  controller1.switchForm(3);   
        },
       ),
     ]

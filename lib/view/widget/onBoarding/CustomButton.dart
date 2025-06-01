@@ -4,11 +4,13 @@ import 'package:orderly/core/them/app_colors.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final Color? buttonColor; // خاصية اختيارية لتغيير اللون
 
   const CustomButton({
     Key? key,
     required this.text,
     required this.onPressed,
+    this.buttonColor, 
   }) : super(key: key);
 
   @override
@@ -22,7 +24,8 @@ class CustomButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primary,
+            backgroundColor: buttonColor ??
+                AppColors.primary, // لو ما حددت، استخدم اللون الأساسي
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -31,7 +34,7 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-              color:AppColors.white,
+              color: AppColors.white,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),

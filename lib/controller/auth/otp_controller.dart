@@ -1,59 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orderly/core/classes/staterequest.dart';
+import 'package:orderly/core/services/auth/auth_service.dart';
 
 class OtpController extends GetxController {
-  // عدد خانات OTP
-  final int otpLength = 5;
+  List<TextEditingController> controllers = List.generate(5, (_) => TextEditingController());
+  List<FocusNode> focusNodes = List.generate(5, (_) => FocusNode());
 
-  // الكنترولرات والفوكس نودز لكل خانة
-  late List<TextEditingController> controllers;
-  late List<FocusNode> focusNodes;
+  late String phone;
+  late String newPassword;
+
+  final AuthService authService = AuthService();
+  Staterequest staterequest = Staterequest.none;
 
   @override
   void onInit() {
+    // استقبل البيانات الممررة من صفحة نسيان كلمة السر
+    // phone = Get.arguments['phone'];
+    // newPassword = Get.arguments['newPassword'];
     super.onInit();
-    controllers = List.generate(otpLength, (_) => TextEditingController());
-    focusNodes = List.generate(otpLength, (_) => FocusNode());
   }
 
-  // عند إدخال أو حذف قيمة داخل خانة معينة
-  void handleInput(String value, int index) {
-    if (value.isNotEmpty) {
-      if (index < otpLength - 1) {
-        if (index + 1 < focusNodes.length) {
-          focusNodes[index + 1].requestFocus();
-        }
-      } else {
-        if (index < focusNodes.length) {
-          focusNodes[index].unfocus();
-        }
-      }
-    } else {
-      if (index > 0) {
-        if (index - 1 >= 0) {
-          focusNodes[index - 1].requestFocus();
-        }
-      }
+  void handleInput(String val, int index) {
+    if (val.isNotEmpty && index < focusNodes.length - 1) {
+      focusNodes[index + 1].requestFocus();
+    }
+    if (val.isEmpty && index > 0) {
+      focusNodes[index - 1].requestFocus();
     }
   }
 
-  // التحقق من الكود
-  void verifyOtp() {
-    final otp = controllers.map((c) => c.text).join();
-    print("رمز OTP المُدخل: $otp");
+  void verifyOtp() async {
+    String otpCode = controllers.map((c) => c.text).join();
 
-    // ضيف التحقق الفعلي هون، مثلاً:
-    // if (otp == expectedOtp) { ... }
-  }
+    if (otpCode.length < 5) {
+      Get.snackbar("خطأ", "يرجى إدخال رمز مكون من 5 أرقام");
+      return;
+    }
 
-  @override
-  void onClose() {
-    for (var c in controllers) {
-      c.dispose();
+    staterequest = Staterequest.loading;
+    update();
+
+    final response = await authService.resetPassword(
+      phone: phone,
+      otp: otpCode,
+      newPassword: newPassword,
+    );
+
+    staterequest = response;
+    update();
+
+    if (staterequest == Staterequest.success) {
+      Get.snackbar("تم", "تم تغيير كلمة السر بنجاح");
+      Get.offAllNamed("/login");
     }
-    for (var f in focusNodes) {
-      f.dispose();
-    }
-    super.onClose();
   }
 }

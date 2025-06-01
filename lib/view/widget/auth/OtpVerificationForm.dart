@@ -46,7 +46,7 @@ class OtpVerificationForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: AppColors.accent2,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: GestureDetector(
@@ -74,7 +74,12 @@ class OtpVerificationForm extends StatelessWidget {
                   onPressed: controller.verifyOtp,
                 ),
                 const SizedBox(height: 10),
-                // بإمكانك لاحقًا إضافة زر إعادة الإرسال هنا
+                  CustomButton(
+                  text: 'إعادة الإرسال',
+                  onPressed: controller.verifyOtp,
+                  buttonColor: AppColors.grey
+                  ,
+                ),
               ],
             ),
           ),

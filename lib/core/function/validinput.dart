@@ -6,11 +6,22 @@ validInput(String val, int min, int max, String type) {
       return "الرجاء إدخال الاسم";
     }
   }
+
   if (type == "email") {
     if (!GetUtils.isEmail(val)) {
       return " الرجاء إدخال البريد الالكتروني";
     }
   }
+  
+  if (type == "address") {
+    if (val == null || val.isEmpty) {
+      return "الرجاء إدخال العنوان";
+    }
+    if (val.length < 3) {
+      return "العنوان يجب أن يحتوي على 3 أحرف على الأقل";
+    }
+  }
+
 
   if (type == "phone") {
     if (!GetUtils.isPhoneNumber(val)) {

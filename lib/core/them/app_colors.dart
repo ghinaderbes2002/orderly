@@ -7,10 +7,13 @@ class AppColors {
    static const Color secondary = Color(0xFFFDF2E3);
 
   // Accent Colors
-  static const Color accent1 = Color(0xFF262D2F); 
+  static const Color accent1 = Color(0xFFF5F5F5); 
   static const Color accent2 = Color(0xFFFAFAFA); 
   static const Color accent3 = Color(0xB21F2937); 
-  static const Color accent4 = Color(0xFFE0F7FA);
+  static const Color accent31 = Color(0xE51F2937); 
+  static const Color accent32 = Color(0x661F2937);
+
+   static const Color accent4 = Color(0x4DD1D5DB);
 
   // Neutral Colors
   static const Color black = Color(0xFF1A1A1A);

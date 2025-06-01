@@ -1,1 +1,4 @@
-enum Staterequest { loading, offlinefailure, serverfailure, none, empty, error }
+enum Staterequest { 
+  loading,
+  failure,success,
+ offlinefailure, serverfailure, none, empty, error }

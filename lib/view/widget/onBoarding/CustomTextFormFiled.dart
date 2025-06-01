@@ -6,7 +6,7 @@ import 'package:orderly/core/them/app_fonts.dart';
 class CustomTextFormField extends StatelessWidget {
   final String label;
   final String hintText;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final bool isPassword;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
@@ -22,7 +22,7 @@ class CustomTextFormField extends StatelessWidget {
     Key? key,
     required this.label,
     required this.hintText,
-    required this.prefixIcon,
+     this.prefixIcon,
     this.isPassword = false,
     this.keyboardType,
     this.controller,

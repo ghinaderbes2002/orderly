@@ -7,7 +7,7 @@ import 'package:orderly/view/widget/auth/signUPForm.dart';
 
 class AuthController extends GetxController {
   final formState = GlobalKey<FormState>();
-  int currentFormIndex = 0; // مؤشر النموذج الحالي
+  int currentFormIndex = 0;
 
   // قائمة النماذج
   final List<Widget> forms = [
@@ -15,7 +15,6 @@ class AuthController extends GetxController {
     const SignUpForm(),
     const ForgetPassForm(),
      OtpVerificationForm(),
-
   ];
 
   // دالة لتبديل النموذج

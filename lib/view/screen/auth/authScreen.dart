@@ -49,7 +49,6 @@ class AuthPage extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     const Logo(),
                     const SizedBox(height: 30),
                     Expanded(
